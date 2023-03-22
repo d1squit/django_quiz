@@ -14,6 +14,7 @@ class TestModels(TestCase):
             username=cls.username,
             password='123qwe!@#',
             email='user_1@test.com',
+            birthday='2023-03-23',
             first_name='Test'
         )
 
