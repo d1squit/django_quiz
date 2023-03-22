@@ -78,7 +78,7 @@ class UserUpdateForm(UserChangeForm):
             'avatar'
         )
 
-        # widgets = {'birthday': forms.DateInput(attrs={'type': 'date'})}
+    # widgets = {'birthday': forms.DateInput(attrs={'type': 'date'})}
 
 
 class UserRetryVerification(forms.Form):

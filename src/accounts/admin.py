@@ -6,14 +6,14 @@ from .models import User
 
 @admin.register(User)
 class UserAdmin(admin.ModelAdmin):
-    list_display = ('username', 'is_superuser', 'is_staff', 'is_active', 'is_activated', )
+    list_display = ('username', 'is_superuser', 'is_staff', 'is_active', 'is_activated',)
     fieldsets = (
-        (None, {'fields': (('avatar', 'avatar_img',), )}),
+        (None, {'fields': (('avatar', 'avatar_img',),)}),
         ('Register info', {'fields': ('username', 'email')}),
         ('Personal info', {'fields': (('last_name', 'first_name'), ('birthday', 'city'))}),
         ('Permission', {'fields': ('groups', 'user_permissions')}),
-        ('Flags', {'fields': (('is_superuser', 'is_staff', 'is_active', 'is_activated'), )}),
-        (None, {'fields': (('last_login', 'date_joined'), )})
+        ('Flags', {'fields': (('is_superuser', 'is_staff', 'is_active', 'is_activated'),)}),
+        (None, {'fields': (('last_login', 'date_joined'),)})
     )
 
     readonly_fields = ('last_login', 'date_joined', 'avatar_img')

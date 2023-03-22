@@ -15,7 +15,8 @@
         <div class="col-3"></div>
         <div class="col">
             <form method="post">
-                <p>You opened wrong verification link. Write your email, so we can send to you verification email again.</p>
+                <p>You opened wrong verification link. Write your email, so we can send to you verification email
+                    again.</p>
                 {% csrf_token %}
                 {{ form|crispy }}
                 <div class="mt-3 text-center">

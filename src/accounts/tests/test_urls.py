@@ -11,7 +11,8 @@ class TestUrls(SimpleTestCase):
     def test_register_url_resolves(self):
         url = reverse('accounts:register')
         self.assertEqual(resolve(url).func.view_class, UserRegisterView)
-        # assert resolve(url).func.view_class == UserRegisterView, 'rweqgfqfewf'
+
+    # assert resolve(url).func.view_class == UserRegisterView, 'rweqgfqfewf'
 
     def test_profile_url_resolves(self):
         url = reverse('accounts:profile')
