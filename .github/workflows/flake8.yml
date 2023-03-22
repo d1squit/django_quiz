@@ -21,7 +21,7 @@ jobs:
       - name: Analysing the code with Flake8
         env:
           DJANGO_ALLOWED_HOSTS: ${{ secrets.DJANGO_ALLOWED_HOSTS }}
-          DJANGO_DEBUG: ${{ secrets.DJANGO_DEBUG }}
+          DJANGO_DEBUG: ${{ secrets.DJANGO_DEBUG_FOR_FLAKE8 }}
           DJANGO_SECRET_KEY: ${{ secrets.DJANGO_SECRET_KEY }}
         run: |
           flake8 src/ --max-line-length=150 --exclude=migrations
