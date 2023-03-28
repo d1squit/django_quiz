@@ -45,7 +45,8 @@ INSTALLED_APPS = [
     'crispy_forms',
     'crispy_bootstrap5',
 
-    'accounts.apps.AccountsConfig'
+    'accounts.apps.AccountsConfig',
+    'quiz.apps.QuizConfig'
 ]
 
 if DEBUG:

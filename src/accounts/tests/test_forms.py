@@ -15,7 +15,7 @@ class TestForms(TestCase):
                 'username': self.username,
                 'email': self.email,
                 'password1': self.password,
-                'password2': self.password
+                'password2': '123qwe!@#f4er23red3'
             }
         )
 
