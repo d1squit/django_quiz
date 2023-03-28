@@ -15,5 +15,4 @@ class AccountsConfig(AppConfig):
 def user_register_dispatcher(sender, **kwargs):
     send_activation_notification(kwargs['instance'])
 
-
 # user_register.connect(user_register_dispatcher)

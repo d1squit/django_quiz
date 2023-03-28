@@ -1,4 +1,4 @@
-from accounts.forms import UserRegisterForm
+from accounts.forms import UserRegisterForm, UserRetryVerification
 
 from django.test import TestCase
 
@@ -25,3 +25,8 @@ class TestForms(TestCase):
         form = UserRegisterForm(data={})
         self.assertFalse(form.is_valid())
         self.assertEqual(len(form.errors), 4)
+
+    def test_retry_verification_no_data(self):
+        form = UserRetryVerification(data={})
+        self.assertFalse(form.is_valid())
+        self.assertEqual(len(form.errors), 1)

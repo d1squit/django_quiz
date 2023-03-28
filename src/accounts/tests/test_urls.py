@@ -1,4 +1,4 @@
-from accounts.views import UserRegisterView
+from accounts.views import UserLoginView, UserLogoutView, UserRegisterView
 from accounts.views import user_activate
 from accounts.views import user_profile_view
 
@@ -11,7 +11,14 @@ class TestUrls(SimpleTestCase):
     def test_register_url_resolves(self):
         url = reverse('accounts:register')
         self.assertEqual(resolve(url).func.view_class, UserRegisterView)
-        # assert resolve(url).func.view_class == UserRegisterView, 'rweqgfqfewf'
+
+    def test_login_url_resolves(self):
+        url = reverse('accounts:login')
+        self.assertEqual(resolve(url).func.view_class, UserLoginView)
+
+    def test_logout_url_resolves(self):
+        url = reverse('accounts:logout')
+        self.assertEqual(resolve(url).func.view_class, UserLogoutView)
 
     def test_profile_url_resolves(self):
         url = reverse('accounts:profile')
