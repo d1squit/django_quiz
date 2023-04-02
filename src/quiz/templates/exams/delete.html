@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+{% load custom_tags %}
+
+{% block title %}
+    Delete session
+{% endblock %}
+
+{% block header %}
+    Exam: {{ exam.title }}
+{% endblock %}
+
+{% block content %}
+    <div class="container">
+        <div class="row">
+            <div class="col-3"></div>
+            <div class="col">
+                <form method="post">
+                    {% csrf_token %}
+                    <div class="text-center">
+                        <p>Do you really want to remove group <strong>"{{ group.name }}"</strong></p>
+                        <input type="submit" value="Agree" class="btn btn-outline-primary">
+                        <a href="{% url 'groups:list' %}" class="btn btn-outline-primary">Back to list</a>
+                    </div>
+                </form>
+            </div>
+            <div class="col-3"></div>
+        </div>
+    </div>
+{% endblock %}

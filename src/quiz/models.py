@@ -3,8 +3,6 @@ from uuid import uuid4
 from django.contrib.auth import get_user_model
 from django.db import models
 
-from .validators import validate_order_num
-
 
 class BaseModel(models.Model):
     create_timestamp = models.DateTimeField(auto_now_add=True)
@@ -28,6 +26,9 @@ class Exam(BaseModel):
     description = models.TextField(null=True, blank=True)
     level = models.PositiveSmallIntegerField(choices=LEVEL.choices, default=LEVEL.BASIC)
 
+    def q_count(self):
+        return self.questions.count()
+
     def __str__(self):
         return self.title
 
@@ -42,7 +43,7 @@ class Question(BaseModel):
     MAX_ORDER_NUM = 100
 
     exam = models.ForeignKey(Exam, related_name='questions', on_delete=models.CASCADE, null=True, blank=True)
-    order_num = models.PositiveSmallIntegerField(validators=[validate_order_num])
+    order_num = models.PositiveSmallIntegerField()
     text = models.CharField(max_length=2048)
     image = models.ImageField(upload_to='questions/', null=True, blank=True)
 
