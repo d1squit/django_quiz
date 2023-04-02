@@ -27,7 +27,7 @@ class QuestionInlineFormSet(forms.BaseInlineFormSet):
             num_questions = self.instance.exam.questions.count()
             if not (self.instance.MIN_ORDER_NUM <= self.instance.order_num <= num_questions <= self.instance.MAX_ORDER_NUM):
                 raise ValidationError(
-                    f'order_num must be in range (1, question_count < 100)'
+                    'order_num must be in range (1, question_count < 100)'
                 )
 
         if not (self.instance.QUESTION_MIN_LIMIT <= len(self.forms) <= self.instance.QUESTION_MAX_LIMIT):

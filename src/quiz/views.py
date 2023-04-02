@@ -1,7 +1,7 @@
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.http import HttpResponseRedirect
 from django.shortcuts import render
-from django.urls import reverse, reverse_lazy
+from django.urls import reverse
 from django.views.generic import CreateView, DeleteView
 from django.views.generic import DetailView
 from django.views.generic import ListView
@@ -140,20 +140,13 @@ class ExamResultUpdateView(LoginRequiredMixin, UpdateView):
     def get(self, request, *args, **kwargs):
         uuid = kwargs.get('uuid')
         res_uuid = kwargs.get('res_uuid')
-        user = request.user
-
-        result = Result.objects.get(
-            user=user,
-            uuid=res_uuid
-        )
 
         return HttpResponseRedirect(
             reverse(
                 'quiz:question',
                 kwargs={
                     'uuid': uuid,
-                    'res_uuid': res_uuid,
-                    # 'order_num': result.current_order_number + 1
+                    'res_uuid': res_uuid
                 }
             )
         )

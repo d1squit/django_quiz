@@ -1,8 +1,8 @@
 from django.contrib import admin
 
 from .forms import ChoiceInlineFormSet
-from .forms import QuestionInlineFormSet
 from .forms import QuestionAdminForm
+from .forms import QuestionInlineFormSet
 from .models import Choice
 from .models import Exam
 from .models import Question
