@@ -2,6 +2,7 @@ from django.contrib import admin
 
 from .forms import ChoiceInlineFormSet
 from .forms import QuestionInlineFormSet
+from .forms import QuestionAdminForm
 from .models import Choice
 from .models import Exam
 from .models import Question
@@ -28,6 +29,8 @@ class QuestionAdmin(admin.ModelAdmin):
 
     exam_title.short_description = 'exam'
     exam_level.short_description = 'level'
+
+    form = QuestionAdminForm
 
 
 class QuestionInline(admin.TabularInline):

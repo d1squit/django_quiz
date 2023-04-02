@@ -38,7 +38,10 @@ class Exam(BaseModel):
 
 
 class Question(BaseModel):
-    exam = models.ForeignKey(Exam, related_name='questions', on_delete=models.CASCADE)
+    MIN_ORDER_NUM = 1
+    MAX_ORDER_NUM = 100
+
+    exam = models.ForeignKey(Exam, related_name='questions', on_delete=models.CASCADE, null=True, blank=True)
     order_num = models.PositiveSmallIntegerField(validators=[validate_order_num])
     text = models.CharField(max_length=2048)
     image = models.ImageField(upload_to='questions/', null=True, blank=True)
