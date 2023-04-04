@@ -32,6 +32,7 @@ DEBUG = getenv('DJANGO_DEBUG').lower() in ('true', 'on', '1')
 
 ALLOWED_HOSTS = getenv('DJANGO_ALLOWED_HOSTS').split()
 
+
 # Application definition
 
 INSTALLED_APPS = [
@@ -46,7 +47,7 @@ INSTALLED_APPS = [
     'crispy_bootstrap5',
 
     'accounts.apps.AccountsConfig',
-    'quiz.apps.QuizConfig'
+    'quiz.apps.QuizConfig',
 ]
 
 if DEBUG:
@@ -82,6 +83,7 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'core.wsgi.application'
 
+
 # Database
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
 
@@ -91,6 +93,7 @@ DATABASES = {
         'NAME': BASE_DIR / '../db.sqlite3',
     }
 }
+
 
 # Password validation
 # https://docs.djangoproject.com/en/4.1/ref/settings/#auth-password-validators
@@ -110,6 +113,7 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+
 # Internationalization
 # https://docs.djangoproject.com/en/4.1/topics/i18n/
 
@@ -120,6 +124,7 @@ TIME_ZONE = 'UTC'
 USE_I18N = True
 
 USE_TZ = True
+
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.1/howto/static-files/
