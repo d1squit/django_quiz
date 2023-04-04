@@ -4,31 +4,16 @@ from django.core.exceptions import ValidationError
 from .models import Choice, Question
 
 
-class QuestionAdminForm(forms.ModelForm):
-    class Meta:
-        model = Question
-        fields = '__all__'
-
-    def clean(self):
-        cleaned_data = super().clean()
-        order_num = cleaned_data.get('order_num')
-        exam = cleaned_data.get('exam')
-        if exam and order_num is not None:
-            num_questions = exam.questions.count()
-            if not (1 < order_num <= num_questions <= 100):
-                raise ValidationError('order_num must be between 1 and the number of questions in the exam and less then 100')
-        return cleaned_data
-
-
 class QuestionInlineFormSet(forms.BaseInlineFormSet):
     def clean(self):
-        print(self.instance.exam)
-        if self.instance.exam is not None:
-            num_questions = self.instance.exam.questions.count()
-            if not (self.instance.MIN_ORDER_NUM <= self.instance.order_num <= num_questions <= self.instance.MAX_ORDER_NUM):
-                raise ValidationError(
-                    'order_num must be in range (1, question_count < 100)'
-                )
+        order = list(map(lambda item: item.cleaned_data['order_num'], self.forms))
+
+        for order_num in order:
+            if not (1 <= order_num <= len(self.forms) <= self.instance.QUESTION_MAX_LIMIT):
+                raise ValidationError('order_num must be in range (1, question_count < 100)')
+
+        if sum(order) != sum(set(order)):
+            raise ValidationError('order_num must increase on 1')
 
         if not (self.instance.QUESTION_MIN_LIMIT <= len(self.forms) <= self.instance.QUESTION_MAX_LIMIT):
             raise ValidationError(
