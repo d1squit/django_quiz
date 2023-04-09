@@ -31,6 +31,7 @@ SECRET_KEY = getenv('DJANGO_SECRET_KEY')
 DEBUG = getenv('DJANGO_DEBUG').lower() in ('true', 'on', '1')
 
 ALLOWED_HOSTS = getenv('DJANGO_ALLOWED_HOSTS').split()
+CSRF_TRUSTED_ORIGINS = ["http://localhost:8888"]
 
 
 # Application definition
@@ -142,6 +143,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/4.1/howto/static-files/
 
 STATIC_URL = 'static/'
+STATIC_ROOT = BASE_DIR / 'static'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
