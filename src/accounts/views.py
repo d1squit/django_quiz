@@ -25,7 +25,7 @@ def user_activate(request, sign):
     if request.method == 'POST':
         form = UserRetryVerification(request.POST)
         if form.is_valid():
-            email = form.cleaned_data['email']
+            email = form.cleaned_data['email_report']
             try:
                 user = get_user_model().objects.get(email__iexact=email)
             except get_user_model().DoesNotExist:

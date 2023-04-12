@@ -1,0 +1,8 @@
+Dear user {{ user.username }}!
+
+You haven't passed {{ count }} tests.
+You can finish them here:
+{{ host }}{% url 'quiz:list' %}
+
+See you!
+Sincerely, the administration of the site "Quiz".

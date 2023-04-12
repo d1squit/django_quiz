@@ -12,7 +12,7 @@ class TestViews(TestCase):
             'username': 'user_1',
             'password1': '123qwe!@#',
             'password2': '123qwe!@#',
-            'email': 'user_1@test.com'
+            'email_report': 'user_1@test.com'
         }
         self.client = Client()
         self.registration_url = reverse('accounts:register')
@@ -27,7 +27,7 @@ class TestViews(TestCase):
 
         user = User.objects.first()
         self.assertEqual(user.username, self.data['username'])
-        self.assertEqual(user.email, self.data['email'])
+        self.assertEqual(user.email, self.data['email_report'])
         self.assertTrue(user.check_password(self.data['password1']))
         self.assertFalse(user.is_active)
         self.assertFalse(user.is_activated)

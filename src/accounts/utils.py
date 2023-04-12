@@ -16,3 +16,4 @@ def send_activation_notification(user):
     body = render_to_string('email/activation_letter_body.txt', context)
 
     user.email_user(subject, body)
+

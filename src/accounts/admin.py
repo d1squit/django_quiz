@@ -9,7 +9,7 @@ class UserAdmin(admin.ModelAdmin):
     list_display = ('username', 'is_superuser', 'is_staff', 'is_active', 'is_activated',)
     fieldsets = (
         (None, {'fields': (('avatar', 'avatar_img',),)}),
-        ('Register info', {'fields': ('username', 'email')}),
+        ('Register info', {'fields': ('username', 'email_report')}),
         ('Personal info', {'fields': (('last_name', 'first_name'), ('birthday', 'city'))}),
         ('Permission', {'fields': ('groups', 'user_permissions')}),
         ('Flags', {'fields': (('is_superuser', 'is_staff', 'is_active', 'is_activated'),)}),
