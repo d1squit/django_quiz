@@ -8,5 +8,5 @@ class Command(BaseCommand):
 
     def handle(self, *args, **options):
         from accounts.models import User
-        for user in User.objects.all():
+        for user in User.objects.filter(results__state=0).distinct():
             send_user_report(user)
