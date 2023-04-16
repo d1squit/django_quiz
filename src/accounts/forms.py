@@ -9,7 +9,7 @@ from .apps import user_register
 
 
 class UserRegisterForm(forms.ModelForm):
-    email = forms.EmailField(label='email')
+    email = forms.EmailField(label='email_report')
     password1 = forms.CharField(
         label='password',
         widget=forms.PasswordInput,
