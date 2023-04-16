@@ -50,6 +50,8 @@ INSTALLED_APPS = [
 
     'accounts.apps.AccountsConfig',
     'quiz.apps.QuizConfig',
+
+    'long_task.apps.LongTaskConfig'
 ]
 
 if DEBUG:
@@ -170,6 +172,7 @@ ADMINS = [('admin', 'admin@email_report.com')]
 EMAIL_SUBJECT_PREFIX = '[QUIZ] '
 
 CELERY_BROKER_URL = getenv('CELERY_BROKER')
+CELERY_RESULT_BACKEND = getenv('CELERY_BACKEND')
 
 CELERY_BEAT_SCHEDULE = {
     'send_email_report': {
@@ -180,4 +183,18 @@ CELERY_BEAT_SCHEDULE = {
         'task': 'quiz.my_tasks.send_user_email_report',
         'schedule': crontab(minute='*/1')
     }
+}
+
+CACHES = {
+    'default': {
+        'BACKEND': 'django.core.cache.backends.redis.RedisCache',
+        'LOCATION': getenv('CACHE_DB_URL'),
+        'OPTIONS': {
+            'db': '1',
+            'parser_class': 'redis.connection.PythonParser',
+            'pool_class': 'redis.BlockingConnectionPool',
+        },
+        'KEY_PREFIX': 'quiz'
+    }
+
 }
